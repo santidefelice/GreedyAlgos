@@ -170,7 +170,7 @@ Minimum Spanning Tree (selected routes):
       4  \\   /
           \\ /7
 
-Total Cost: $25 (edges: 0-3:$5, 2-3:$4, 3-4:$7, 0-2:$6, 1-4:$8)
+Total Cost: $24 (edges: 2-3:$4, 0-3:$5, 3-4:$7, 1-4:$8)
 """)
 
 
@@ -205,6 +205,33 @@ mst_edges_2, total_cost_2 = kruskal_mst(num_warehouses_2, edges_2)
 
 print_mst_result(mst_edges_2, total_cost_2)
 
+print("\nGraph Visualization:")
+print("""
+Original Graph (showing all potential routes):
+
+    0       1       2
+    |\\     /|\\     /|
+   5| \\   / | \\   / |5
+    |  \\ /  |  \\ /  |
+    3---4---5---6
+      15|  8|  9|
+         \\ /   \\ /
+          8     11
+
+Minimum Spanning Tree (selected routes):
+
+    0       1       2
+    |       |       |
+   5|       |       |5
+    |       |       |
+    3---4---5---6
+       |  8|  9|
+       |   |   |
+       |   |   |
+
+Total Cost: $39 (edges: 0-3:$5, 2-4:$5, 3-5:$6, 0-1:$7, 1-4:$7, 4-6:$9)
+""")
+
 
 # ============================================================================
 # TEST CASE 3: Dense network scenario
@@ -234,6 +261,27 @@ print_graph(num_warehouses_3, edges_3)
 mst_edges_3, total_cost_3 = kruskal_mst(num_warehouses_3, edges_3)
 
 print_mst_result(mst_edges_3, total_cost_3)
+
+print("\nGraph Visualization:")
+print("""
+Original Graph (showing all potential routes):
+
+    0---1---3---4---5
+    |\\ /|\\ /|\\ /|\\ /|
+   3| X | X | X | X |10
+    |/ \\|/ \\|/ \\|/ \\|
+    2---1---2---6---7
+
+Minimum Spanning Tree (selected routes):
+
+    0   1---3---4---5
+    |   |   |   |   |
+   3|   |   |   |   |6
+    |   |   |   |   |
+    2---1---2---6
+
+Total Cost: $14 (edges: 1-2:$1, 1-3:$2, 3-4:$2, 0-2:$3, 4-5:$6)
+""")
 
 
 # ============================================================================
