@@ -145,34 +145,6 @@ mst_edges_1, total_cost_1 = kruskal_mst(num_warehouses_1, edges_1)
 
 print_mst_result(mst_edges_1, total_cost_1)
 
-print("\nGraph Visualization:")
-print("""
-Original Graph (showing all potential routes):
-
-        10
-    0 --------1
-    |\\      / |\\
-   6| \\5  9/  | \\8
-    |  \\ /   15  \\
-    2---3------4
-      4  \\   /
-          \\ /7
-           X
-          /12\\
-         
-Minimum Spanning Tree (selected routes):
-
-    0       1
-    |        \\
-   6|         \\8
-    |          \\
-    2---3------4
-      4  \\   /
-          \\ /7
-
-Total Cost: $24 (edges: 2-3:$4, 0-3:$5, 3-4:$7, 1-4:$8)
-""")
-
 
 # ============================================================================
 # TEST CASE 2: Larger network with 7 warehouses
@@ -205,33 +177,6 @@ mst_edges_2, total_cost_2 = kruskal_mst(num_warehouses_2, edges_2)
 
 print_mst_result(mst_edges_2, total_cost_2)
 
-print("\nGraph Visualization:")
-print("""
-Original Graph (showing all potential routes):
-
-    0       1       2
-    |\\     /|\\     /|
-   5| \\   / | \\   / |5
-    |  \\ /  |  \\ /  |
-    3---4---5---6
-      15|  8|  9|
-         \\ /   \\ /
-          8     11
-
-Minimum Spanning Tree (selected routes):
-
-    0       1       2
-    |       |       |
-   5|       |       |5
-    |       |       |
-    3---4---5---6
-       |  8|  9|
-       |   |   |
-       |   |   |
-
-Total Cost: $39 (edges: 0-3:$5, 2-4:$5, 3-5:$6, 0-1:$7, 1-4:$7, 4-6:$9)
-""")
-
 
 # ============================================================================
 # TEST CASE 3: Dense network scenario
@@ -262,67 +207,5 @@ mst_edges_3, total_cost_3 = kruskal_mst(num_warehouses_3, edges_3)
 
 print_mst_result(mst_edges_3, total_cost_3)
 
-print("\nGraph Visualization:")
-print("""
-Original Graph (showing all potential routes):
 
-    0---1---3---4---5
-    |\\ /|\\ /|\\ /|\\ /|
-   3| X | X | X | X |10
-    |/ \\|/ \\|/ \\|/ \\|
-    2---1---2---6---7
-
-Minimum Spanning Tree (selected routes):
-
-    0   1---3---4---5
-    |   |   |   |   |
-   3|   |   |   |   |6
-    |   |   |   |   |
-    2---1---2---6
-
-Total Cost: $14 (edges: 1-2:$1, 1-3:$2, 3-4:$2, 0-2:$3, 4-5:$6)
-""")
-
-
-# ============================================================================
-# ALGORITHM ANALYSIS
-# ============================================================================
-print("\n\n" + "="*60)
-print("ALGORITHM ANALYSIS")
-print("="*60)
-
-print("""
-TIME COMPLEXITY:
-- Sorting edges: O(E log E) where E is number of edges
-- Union-Find operations: O(α(V)) ≈ O(1) amortized per operation
-- Total: O(E log E) or O(E log V) since E ≤ V²
-
-SPACE COMPLEXITY:
-- O(V + E) for storing graph and Union-Find structure
-
-OPTIMALITY PROOF (Why Greedy Works):
-This problem CAN be optimally solved by greedy algorithm (Kruskal's).
-
-Proof by Exchange Argument:
-1. Assume there exists an MST T* that differs from our greedy solution G
-2. Let e be the first edge in G (sorted order) that's not in T*
-3. Adding e to T* creates a cycle
-4. In this cycle, there must be another edge e' not in G
-5. Since we considered edges in sorted order, weight(e) ≤ weight(e')
-6. Replacing e' with e gives a tree with cost ≤ cost(T*)
-7. Since T* was optimal, this new tree is also optimal
-8. By repeating this exchange, we can transform T* into G
-9. Therefore, G is also optimal (MST)
-
-Greedy Choice Property:
-At each step, choosing the minimum weight edge that doesn't create a
-cycle is safe because it must be part of SOME minimum spanning tree.
-
-Optimal Substructure:
-Removing any edge from an MST splits it into two components, and the
-remaining edges form MSTs of those components.
-
-CONCLUSION: Kruskal's algorithm GUARANTEES an optimal solution for the
-Minimum Spanning Tree problem, making it perfect for minimizing the
-total construction cost while ensuring all warehouses are connected.
-""")
+# Removed analysis output per request

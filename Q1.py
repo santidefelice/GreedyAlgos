@@ -185,29 +185,4 @@ if __name__ == "__main__":
             selected = schedule_bands(bands)
             print_results(bands, selected)
     
-    # Optimality Analysis
-    print("\n" + "="*60)
-    print("OPTIMALITY ANALYSIS")
-    print("="*60)
-    print("""
-This problem CAN be solved optimally using a greedy algorithm.
-
-Greedy Choice: Always select the activity that finishes earliest among
-remaining compatible activities.
-
-Proof of Optimality (Exchange Argument):
-1. Let A be the optimal solution and G be our greedy solution
-2. If they differ, let the first difference be at position k
-3. We can replace A's kth activity with G's kth activity (earlier finish)
-4. This leaves more room for future activities, so A' is also optimal
-5. By induction, we can transform A into G without losing optimality
-
-Time Complexity: O(n log n)
-- Sorting: O(n log n)
-- Selection: O(n)
-- Total: O(n log n)
-
-This greedy algorithm guarantees the maximum number of non-overlapping
-performances will be scheduled.
-    """)
-    print("="*60)
+    # Removed analysis output per request
